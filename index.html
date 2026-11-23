@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTML Forms - Online Class</title>
+
+    <title>ALGORITHM ARMY | Online Class</title>
 
     <style>
         * {
@@ -15,7 +16,7 @@
 
         body {
             font-family: Arial, sans-serif;
-            background: #f1f5f9;
+            background: linear-gradient(135deg, #eaf2ff, #f8fafc);
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -24,76 +25,83 @@
         }
 
         .class-card {
-            background: #ffffff;
+            background: white;
             width: 100%;
-            max-width: 400px;
-            border-radius: 16px;
-            padding: 28px;
+            max-width: 430px;
+            padding: 30px;
             text-align: center;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            border-radius: 20px;
             border: 1px solid #e2e8f0;
+            box-shadow: 0 12px 35px rgba(15, 40, 90, 0.10);
             transition: 0.3s ease;
         }
 
         .class-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(15, 40, 90, 0.15);
         }
 
-        .class-icon {
-            width: 65px;
-            height: 65px;
-            background: #e8f0fe;
+        .brand {
             color: #1967d2;
-            border-radius: 15px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 32px;
-            margin: 0 auto 18px;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+        }
+
+        /* Welcome illustration */
+
+        .welcome-image {
+            width: 170px;
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto 15px;
+            display: block;
         }
 
         .status {
             display: inline-block;
             background: #dcfce7;
             color: #15803d;
-            padding: 6px 14px;
-            border-radius: 20px;
+            padding: 7px 15px;
+            border-radius: 30px;
             font-size: 12px;
             font-weight: bold;
-            margin-bottom: 15px;
+            margin-bottom: 17px;
         }
 
-        h2 {
+        h1 {
             color: #172554;
-            font-size: 25px;
+            font-size: 27px;
             margin-bottom: 10px;
+            letter-spacing: 1px;
         }
 
         .subtitle {
             color: #64748b;
             font-size: 14px;
-            margin-bottom: 22px;
+            line-height: 1.6;
+            margin-bottom: 24px;
         }
 
         .time-box {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            padding: 15px;
-            border-radius: 10px;
+            background: #f1f6ff;
+            border: 1px solid #dbeafe;
+            padding: 18px;
+            border-radius: 12px;
             margin-bottom: 22px;
-        }
-
-        .time-box p {
-            color: #334155;
-            font-size: 16px;
-            font-weight: bold;
         }
 
         .time-label {
             color: #64748b;
             font-size: 12px;
-            margin-bottom: 7px;
+            margin-bottom: 8px;
+        }
+
+        .time {
+            color: #1d4ed8;
+            font-size: 21px;
+            font-weight: bold;
         }
 
         .meet-btn {
@@ -102,11 +110,13 @@
             background: #1967d2;
             color: white;
             text-decoration: none;
-            padding: 14px;
-            border-radius: 9px;
+            padding: 16px;
+            border-radius: 10px;
             font-size: 15px;
             font-weight: bold;
             transition: 0.3s ease;
+            border: none;
+            cursor: pointer;
         }
 
         .meet-btn:hover {
@@ -114,17 +124,74 @@
             transform: scale(1.02);
         }
 
+        .meet-btn:disabled {
+            background: #64748b;
+            cursor: wait;
+            transform: none;
+        }
+
+        /* Welcome message after clicking */
+
+        .message {
+            display: none;
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            color: #1e40af;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 16px;
+            font-size: 14px;
+            font-weight: bold;
+            line-height: 1.6;
+        }
+
         .footer {
-            margin-top: 22px;
+            margin-top: 23px;
             color: #64748b;
             font-size: 12px;
-            line-height: 1.8;
+            line-height: 2;
         }
 
         .footer span {
-            margin: 0 4px;
+            margin: 0 3px;
         }
 
+        .divider {
+            border: none;
+            border-top: 1px solid #e2e8f0;
+            margin: 20px 0;
+        }
+
+        /* Mobile responsiveness */
+
+        @media (max-width: 480px) {
+
+            body {
+                padding: 15px;
+            }
+
+            .class-card {
+                padding: 23px 18px;
+                border-radius: 16px;
+            }
+
+            h1 {
+                font-size: 23px;
+            }
+
+            .welcome-image {
+                width: 145px;
+            }
+
+            .time {
+                font-size: 19px;
+            }
+
+            .meet-btn {
+                padding: 15px;
+                font-size: 14px;
+            }
+        }
     </style>
 </head>
 
@@ -132,37 +199,185 @@
 
     <div class="class-card">
 
-        <div class="class-icon">
-            📚
+        <div class="brand">
+            ⚡ ALGORITHM ARMY ⚡
         </div>
+
+        <!-- Welcome clip art illustration -->
+        <svg class="welcome-image"
+             viewBox="0 0 200 175"
+             xmlns="http://www.w3.org/2000/svg"
+             role="img"
+             aria-label="Friendly cartoon person waving and saying welcome">
+
+            <!-- Speech bubble -->
+            <rect x="65" y="5" width="125" height="45"
+                  rx="15" fill="#dbeafe"/>
+
+            <path d="M85 48 L78 62 L103 49"
+                  fill="#dbeafe"/>
+
+            <text x="127" y="33"
+                  text-anchor="middle"
+                  font-size="16"
+                  font-weight="bold"
+                  fill="#1d4ed8">WELCOME!</text>
+
+            <!-- Body -->
+            <path d="M65 105 Q100 85 135 105 L145 170 L55 170 Z"
+                  fill="#1967d2"/>
+
+            <!-- Neck -->
+            <rect x="88" y="78" width="24" height="25"
+                  rx="8" fill="#d99a6c"/>
+
+            <!-- Face -->
+            <circle cx="100" cy="62" r="30"
+                    fill="#e8ad7d"/>
+
+            <!-- Hair -->
+            <path d="M71 60 Q65 23 100 25 Q134 22 130 59
+                     Q116 37 96 43 Q84 39 71 60"
+                  fill="#263449"/>
+
+            <!-- Eyes -->
+            <circle cx="89" cy="62" r="2.5" fill="#263449"/>
+            <circle cx="111" cy="62" r="2.5" fill="#263449"/>
+
+            <!-- Smile -->
+            <path d="M90 75 Q100 85 111 75"
+                  stroke="#8b4513"
+                  stroke-width="2.5"
+                  fill="none"
+                  stroke-linecap="round"/>
+
+            <!-- Left arm -->
+            <path d="M65 110 Q43 105 30 77"
+                  stroke="#1967d2"
+                  stroke-width="15"
+                  fill="none"
+                  stroke-linecap="round"/>
+
+            <!-- Left hand -->
+            <circle cx="28" cy="72" r="10" fill="#e8ad7d"/>
+
+            <!-- Right arm waving -->
+            <path d="M133 110 Q157 85 158 62"
+                  stroke="#1967d2"
+                  stroke-width="15"
+                  fill="none"
+                  stroke-linecap="round"/>
+
+            <!-- Right hand -->
+            <circle cx="158" cy="56" r="10" fill="#e8ad7d"/>
+
+            <!-- Fingers -->
+            <path d="M153 49 L149 39 M158 47 L158 36 M163 49 L168 40"
+                  stroke="#e8ad7d"
+                  stroke-width="5"
+                  stroke-linecap="round"/>
+
+            <!-- Decorative stars -->
+            <text x="12" y="25" font-size="17" fill="#f59e0b">✦</text>
+            <text x="170" y="90" font-size="15" fill="#f59e0b">✦</text>
+
+        </svg>
 
         <span class="status">● ONLINE CLASS</span>
 
-        <h2>HTML FORMS</h2>
+        <h1>HTML FORMS</h1>
 
         <p class="subtitle">
-            Live Interactive Learning Session
+            Welcome to our learning session!<br>
+            Learn, practice and grow together.
         </p>
 
         <div class="time-box">
-            <div class="time-label">⏰ CLASS SCHEDULE</div>
-            <p>9:00 PM - 11:00 PM</p>
+
+            <div class="time-label">
+                ⏰ CLASS SCHEDULE
+            </div>
+
+            <div class="time">
+                9:00 PM - 11:00 PM
+            </div>
+
         </div>
 
-        <a href="https://meet.google.com/ptc-wqux-jdb"
-           target="_blank"
-           rel="noopener noreferrer"
-           class="meet-btn">
+        <button class="meet-btn" id="joinBtn"
+                onclick="joinClass()">
+
             🎥 Join Google Meet →
-        </a>
+
+        </button>
+
+        <div class="message" id="welcomeMessage">
+            💙 Hope You Will Understand!<br>
+            Preparing your classroom...<br>
+            <span id="countdown">Redirecting in 5 seconds...</span>
+        </div>
+
+        <hr class="divider">
 
         <div class="footer">
-            <span>💻 Be on time</span>
-            <span>📖 Come prepared</span>
-            <span>🚀 Keep learning</span>
+            💻 Be on time <span>•</span>
+            📚 Come prepared <span>•</span>
+            🚀 Keep learning
+        </div>
+
+        <div class="footer">
+            © 2026 ALGORITHM ARMY
         </div>
 
     </div>
+
+    <script>
+
+        function joinClass() {
+
+            const meetLink =
+                "https://meet.google.com/ptc-wqux-jdb";
+
+            const button = document.getElementById("joinBtn");
+            const message = document.getElementById("welcomeMessage");
+            const countdown = document.getElementById("countdown");
+
+            // Prevent multiple clicks
+            button.disabled = true;
+
+            // Change button text
+            button.innerHTML = "⏳ Preparing your class...";
+
+            // Display welcome message
+            message.style.display = "block";
+
+            let seconds = 5;
+
+            countdown.innerHTML =
+                "Redirecting in " + seconds + " seconds...";
+
+            const timer = setInterval(function () {
+
+                seconds--;
+
+                if (seconds > 0) {
+
+                    countdown.innerHTML =
+                        "Redirecting in " + seconds + " seconds...";
+
+                } else {
+
+                    clearInterval(timer);
+
+                    window.location.href = meetLink;
+
+                }
+
+            }, 1000);
+
+        }
+
+    </script>
 
 </body>
 </html>
