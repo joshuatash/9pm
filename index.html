@@ -16,8 +16,8 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            /* Rich background gradient */
-            background: linear-gradient(135deg, #d9e2ff 0%, #f0f4ff 50%, #e0e7ff 100%);
+            /* Deep navy to soft blue gradient background for contrast */
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #1e3a8a 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -27,31 +27,32 @@
         }
 
         .class-card {
-            background: linear-gradient(180deg, #ffffff 0%, #f8faff 100%);
+            /* LINEAR GRADIENT WITH GOLDENROD */
+            background: linear-gradient(160deg, #daa520 0%, #fdf8e7 25%, #ffffff 60%, #fffbf0 100%);
             width: 100%;
             max-width: 430px;
             padding: 35px 30px;
             text-align: center;
             border-radius: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 20px 50px rgba(15, 40, 90, 0.15), inset 0 2px 0 rgba(255,255,255,0.5);
+            border: 2px solid rgba(218, 165, 32, 0.4);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), inset 0 2px 0 rgba(255,255,255,0.8);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
         }
 
         .class-card:hover {
             transform: translateY(-6px);
-            box-shadow: 0 25px 60px rgba(15, 40, 90, 0.2), inset 0 2px 0 rgba(255,255,255,0.5);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), inset 0 2px 0 rgba(255,255,255,0.8);
         }
 
         .brand {
-            color: #1e40af;
+            color: #854d0e;
             font-size: 13px;
             font-weight: 800;
             letter-spacing: 4px;
             margin-bottom: 20px;
             text-transform: uppercase;
-            background: linear-gradient(90deg, #1e40af, #3b82f6);
+            background: linear-gradient(90deg, #854d0e, #daa520);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -62,7 +63,6 @@
             height: 180px;
             margin: 0 auto 15px;
             position: relative;
-            /* Gentle floating animation for the whole book */
             animation: floatBook 3s infinite alternate ease-in-out;
         }
 
@@ -75,7 +75,7 @@
             width: 100%;
             height: 100%;
             overflow: visible;
-            filter: drop-shadow(0px 15px 15px rgba(0,0,0,0.15));
+            filter: drop-shadow(0px 15px 15px rgba(133, 77, 14, 0.25));
             perspective: 800px;
         }
 
@@ -102,12 +102,8 @@
         }
 
         /* Sparkle Animations */
-        .sparkle-1 {
-            animation: sparkle 2s infinite alternate;
-        }
-        .sparkle-2 {
-            animation: sparkle 2.5s infinite alternate 0.5s;
-        }
+        .sparkle-1 { animation: sparkle 2s infinite alternate; }
+        .sparkle-2 { animation: sparkle 2.5s infinite alternate 0.5s; }
         @keyframes sparkle {
             0% { opacity: 0.2; transform: scale(0.8); }
             100% { opacity: 1; transform: scale(1.2); }
@@ -116,18 +112,19 @@
         /* --- REST OF THE UI --- */
         .status {
             display: inline-block;
-            background: linear-gradient(135deg, #dcfce7, #bbf7d0);
-            color: #166534;
+            background: linear-gradient(135deg, #daa520, #f59e0b);
+            color: #ffffff;
             padding: 8px 18px;
             border-radius: 30px;
             font-size: 12px;
             font-weight: 700;
             margin-bottom: 18px;
-            box-shadow: 0 4px 10px rgba(22, 101, 52, 0.1);
+            box-shadow: 0 4px 10px rgba(218, 165, 32, 0.3);
+            letter-spacing: 0.5px;
         }
 
         h1 {
-            color: #0f172a;
+            color: #451a03;
             font-size: 28px;
             margin-bottom: 12px;
             font-weight: 800;
@@ -135,7 +132,7 @@
         }
 
         .subtitle {
-            color: #64748b;
+            color: #78350f;
             font-size: 14px;
             line-height: 1.6;
             margin-bottom: 26px;
@@ -143,8 +140,9 @@
         }
 
         .time-box {
-            background: linear-gradient(135deg, #eff6ff, #dbeafe);
-            border: 1px solid #bfdbfe;
+            /* Warm gradient to match goldenrod */
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            border: 1px solid #fcd34d;
             padding: 20px;
             border-radius: 16px;
             margin-bottom: 24px;
@@ -152,7 +150,7 @@
         }
 
         .time-label {
-            color: #475569;
+            color: #92400e;
             font-size: 12px;
             font-weight: 700;
             letter-spacing: 1px;
@@ -161,7 +159,7 @@
         }
 
         .time {
-            color: #1d4ed8;
+            color: #b45309;
             font-size: 22px;
             font-weight: 800;
             text-shadow: 0 1px 1px rgba(255,255,255,0.8);
@@ -170,8 +168,9 @@
         .meet-btn {
             display: block;
             width: 100%;
-            background: linear-gradient(135deg, #2563eb, #1e40af);
-            color: white;
+            /* Dark navy button to contrast with golden card */
+            background: linear-gradient(135deg, #1e3a8a, #0f172a);
+            color: #ffffff;
             text-decoration: none;
             padding: 16px;
             border-radius: 12px;
@@ -180,18 +179,18 @@
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3), inset 0 1px 0 rgba(255,255,255,0.2);
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.4), inset 0 1px 0 rgba(255,255,255,0.2);
         }
 
         .meet-btn:hover:not(:disabled) {
-            background: linear-gradient(135deg, #1d4ed8, #1e3a8a);
+            background: linear-gradient(135deg, #172554, #020617);
             transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4), inset 0 1px 0 rgba(255,255,255,0.2);
+            box-shadow: 0 8px 20px rgba(15, 23, 42, 0.5), inset 0 1px 0 rgba(255,255,255,0.2);
         }
 
         .meet-btn:active:not(:disabled) {
             transform: translateY(1px) scale(0.98);
-            box-shadow: 0 2px 5px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 2px 5px rgba(15, 23, 42, 0.3);
         }
 
         .meet-btn:disabled {
@@ -203,9 +202,9 @@
 
         .message {
             display: none;
-            background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
-            border: 1px solid #a5b4fc;
-            color: #3730a3;
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            border: 1px solid #fcd34d;
+            color: #92400e;
             padding: 16px;
             border-radius: 12px;
             margin-top: 18px;
@@ -222,7 +221,7 @@
 
         .footer {
             margin-top: 25px;
-            color: #64748b;
+            color: #854d0e;
             font-size: 12px;
             line-height: 2;
             font-weight: 600;
@@ -230,13 +229,13 @@
 
         .footer span {
             margin: 0 5px;
-            color: #cbd5e1;
+            color: #fcd34d;
         }
 
         .divider {
             border: none;
             height: 1px;
-            background: linear-gradient(to right, transparent, #e2e8f0, transparent);
+            background: linear-gradient(to right, transparent, #fcd34d, transparent);
             margin: 22px 0;
         }
 
@@ -264,53 +263,53 @@
             <svg class="book-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
                 
                 <!-- Book Spine Background -->
-                <rect x="95" y="40" width="10" height="120" rx="5" fill="#1e3a8a" />
-                <rect x="95" y="40" width="5" height="120" fill="#2563eb" opacity="0.5"/>
+                <rect x="95" y="40" width="10" height="120" rx="5" fill="#451a03" />
+                <rect x="95" y="40" width="5" height="120" fill="#daa520" opacity="0.8"/>
 
                 <!-- Back Cover (Right) -->
-                <path d="M100 50 Q150 40 170 60 L170 160 Q150 140 100 150 Z" fill="#1e40af"/>
-                <path d="M100 50 Q150 40 170 60 L170 160 Q150 140 100 150 Z" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.3"/>
+                <path d="M100 50 Q150 40 170 60 L170 160 Q150 140 100 150 Z" fill="#78350f"/>
+                <path d="M100 50 Q150 40 170 60 L170 160 Q150 140 100 150 Z" fill="none" stroke="#fcd34d" stroke-width="2" opacity="0.5"/>
 
                 <!-- Left Page (Animated) -->
                 <g class="page-left">
                     <path d="M100 50 Q50 40 30 60 L30 160 Q50 140 100 150 Z" fill="#ffffff"/>
                     <!-- Text Lines on Left Page -->
-                    <line x1="45" y1="80" x2="85" y2="75" stroke="#cbd5e1" stroke-width="4" stroke-linecap="round"/>
-                    <line x1="45" y1="95" x2="80" y2="90" stroke="#cbd5e1" stroke-width="4" stroke-linecap="round"/>
-                    <line x1="45" y1="110" x2="85" y2="105" stroke="#cbd5e1" stroke-width="4" stroke-linecap="round"/>
-                    <line x1="45" y1="125" x2="70" y2="120" stroke="#cbd5e1" stroke-width="4" stroke-linecap="round"/>
+                    <line x1="45" y1="80" x2="85" y2="75" stroke="#fde68a" stroke-width="4" stroke-linecap="round"/>
+                    <line x1="45" y1="95" x2="80" y2="90" stroke="#fde68a" stroke-width="4" stroke-linecap="round"/>
+                    <line x1="45" y1="110" x2="85" y2="105" stroke="#fde68a" stroke-width="4" stroke-linecap="round"/>
+                    <line x1="45" y1="125" x2="70" y2="120" stroke="#fde68a" stroke-width="4" stroke-linecap="round"/>
                     <!-- Bookmark -->
-                    <path d="M75 65 L75 90 L85 85 L85 60 Z" fill="#f59e0b"/>
+                    <path d="M75 65 L75 90 L85 85 L85 60 Z" fill="#daa520"/>
                 </g>
 
                 <!-- Right Page (Animated) -->
                 <g class="page-right">
-                    <path d="M100 50 Q150 40 170 60 L170 160 Q150 140 100 150 Z" fill="#f8fafc"/>
+                    <path d="M100 50 Q150 40 170 60 L170 160 Q150 140 100 150 Z" fill="#fffbeb"/>
                     <!-- Text Lines on Right Page -->
-                    <line x1="115" y1="75" x2="155" y2="80" stroke="#cbd5e1" stroke-width="4" stroke-linecap="round"/>
-                    <line x1="115" y1="90" x2="150" y2="95" stroke="#cbd5e1" stroke-width="4" stroke-linecap="round"/>
-                    <line x1="115" y1="105" x2="155" y2="110" stroke="#cbd5e1" stroke-width="4" stroke-linecap="round"/>
-                    <line x1="115" y1="120" x2="140" y2="125" stroke="#cbd5e1" stroke-width="4" stroke-linecap="round"/>
+                    <line x1="115" y1="75" x2="155" y2="80" stroke="#fde68a" stroke-width="4" stroke-linecap="round"/>
+                    <line x1="115" y1="90" x2="150" y2="95" stroke="#fde68a" stroke-width="4" stroke-linecap="round"/>
+                    <line x1="115" y1="105" x2="155" y2="110" stroke="#fde68a" stroke-width="4" stroke-linecap="round"/>
+                    <line x1="115" y1="120" x2="140" y2="125" stroke="#fde68a" stroke-width="4" stroke-linecap="round"/>
                     <!-- Illustration on Right Page -->
-                    <circle cx="135" cy="140" r="10" fill="#bfdbfe"/>
+                    <circle cx="135" cy="140" r="10" fill="#daa520"/>
                 </g>
 
                 <!-- Central Page Curl Shadow -->
                 <path d="M100 50 L100 150" stroke="#e2e8f0" stroke-width="2"/>
 
-                <!-- Floating Sparkles / Magic around the book -->
+                <!-- Floating Sparkles around the book -->
                 <g class="sparkle-1">
-                    <path d="M30 30 L35 20 L40 30 L50 35 L40 40 L35 50 L30 40 L20 35 Z" fill="#fbbf24"/>
+                    <path d="M30 30 L35 20 L40 30 L50 35 L40 40 L35 50 L30 40 L20 35 Z" fill="#fcd34d"/>
                 </g>
                 <g class="sparkle-2">
-                    <path d="M170 110 L173 103 L176 110 L183 113 L176 116 L173 123 L170 116 L163 113 Z" fill="#60a5fa"/>
+                    <path d="M170 110 L173 103 L176 110 L183 113 L176 116 L173 123 L170 116 L163 113 Z" fill="#fbbf24"/>
                 </g>
                 <g class="sparkle-1" style="animation-delay: 1s;">
-                    <path d="M160 20 L163 13 L166 20 L173 23 L166 26 L163 33 L160 26 L153 23 Z" fill="#c084fc"/>
+                    <path d="M160 20 L163 13 L166 20 L173 23 L166 26 L163 33 L160 26 L153 23 Z" fill="#f59e0b"/>
                 </g>
                 
                 <!-- Bottom Shadow -->
-                <ellipse cx="100" cy="175" rx="60" ry="8" fill="#94a3b8" opacity="0.3"/>
+                <ellipse cx="100" cy="175" rx="60" ry="8" fill="#78350f" opacity="0.3"/>
             </svg>
         </div>
 
