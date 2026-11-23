@@ -7,6 +7,7 @@
     <title>ALGORITHM ARMY | Online Class</title>
 
     <style>
+        /* --- GLOBAL STYLES --- */
         * {
             margin: 0;
             padding: 0;
@@ -14,395 +15,238 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #eaf2ff, #f8fafc);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* Richer, deeper background gradient */
+            background: linear-gradient(135deg, #d9e2ff 0%, #f0f4ff 50%, #e0e7ff 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
+            overflow: hidden;
         }
 
         .class-card {
-            background: white;
+            /* Subtle gradient on the card itself */
+            background: linear-gradient(180deg, #ffffff 0%, #f8faff 100%);
             width: 100%;
             max-width: 430px;
-            padding: 30px;
+            padding: 35px 30px;
             text-align: center;
-            border-radius: 20px;
-            border: 1px solid #e2e8f0;
-            box-shadow: 0 12px 35px rgba(15, 40, 90, 0.10);
-            transition: 0.3s ease;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 20px 50px rgba(15, 40, 90, 0.15), inset 0 2px 0 rgba(255,255,255,0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
         }
 
         .class-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 16px 40px rgba(15, 40, 90, 0.15);
+            transform: translateY(-6px);
+            box-shadow: 0 25px 60px rgba(15, 40, 90, 0.2), inset 0 2px 0 rgba(255,255,255,0.5);
         }
 
         .brand {
-            color: #1967d2;
+            color: #1e40af;
             font-size: 13px;
-            font-weight: bold;
-            letter-spacing: 3px;
+            font-weight: 800;
+            letter-spacing: 4px;
             margin-bottom: 20px;
+            text-transform: uppercase;
+            background: linear-gradient(90deg, #1e40af, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        /* --- ANIMATED CHARACTER STYLES --- */
-        
-        .character-container {
-            width: 170px;
-            height: 170px;
+        /* --- ANIMATED ICON CHARACTER STYLES --- */
+        .character-wrapper {
+            width: 180px;
+            height: 180px;
             margin: 0 auto 15px;
             position: relative;
-            /* Add a subtle up/down bounce to the whole body */
-            animation: bodyBounce 0.6s infinite alternate ease-in-out;
+            /* Bounce animation for the whole body */
+            animation: floatBody 1.5s infinite alternate ease-in-out;
         }
 
-        @keyframes bodyBounce {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-4px); }
+        @keyframes floatBody {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-8px); }
         }
 
-        /* Head Area */
-        .head-group {
-            position: absolute;
-            top: 15px;
-            left: 40px;
-            width: 90px;
-            height: 90px;
-            /* Slight head wobble */
-            animation: headBob 0.6s infinite alternate ease-in-out;
+        .character-svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+            filter: drop-shadow(0px 15px 15px rgba(0,0,0,0.1));
         }
 
-        @keyframes headBob {
-            0% { transform: rotate(-2deg); }
-            100% { transform: rotate(2deg); }
-        }
-
-        .hair {
-            position: absolute;
-            top: 0;
-            left: 5px;
-            width: 80px;
-            height: 45px;
-            background: #9b2fa3;
-            border-radius: 40px 40px 10px 10px;
-            z-index: 2;
-        }
-
-        .hair-pattern {
-            position: absolute;
-            top: 15px;
-            left: 10px;
-            width: 70px;
-            height: 15px;
-            background-image: radial-gradient(circle, #fff 2px, transparent 2px);
-            background-size: 10px 10px;
-            border-radius: 5px;
-            z-index: 3;
-            opacity: 0.5;
-        }
-
-        .face {
-            position: absolute;
-            top: 20px;
-            left: 10px;
-            width: 75px;
-            height: 75px;
-            background: #f48fb1;
-            border-radius: 50% 50% 40% 60%;
-            z-index: 1;
-        }
-
-        /* Spiky dark blue hair on the right side */
-        .hair-spikes {
-            position: absolute;
-            top: 35px;
-            right: 0px;
-            width: 35px;
-            height: 50px;
-            background: #001f3f;
-            clip-path: polygon(0 0, 100% 20%, 80% 40%, 100% 60%, 60% 80%, 100% 100%, 0 100%);
-            z-index: 3;
-        }
-
-        .eye {
-            position: absolute;
-            top: 45px;
-            left: 30px;
-            width: 12px;
-            height: 12px;
-            background: white;
-            border-radius: 50%;
-            border: 2px solid #001f3f;
-            z-index: 4;
-        }
-
-        .eye::after {
-            content: '';
-            position: absolute;
-            top: 2px;
-            left: 2px;
-            width: 4px;
-            height: 4px;
-            background: #001f3f;
-            border-radius: 50%;
-        }
-
-        .smile {
-            position: absolute;
-            top: 65px;
-            left: 40px;
-            width: 20px;
-            height: 10px;
-            border-bottom: 3px solid #001f3f;
-            border-radius: 50%;
-            z-index: 4;
-            transform: rotate(-10deg);
-        }
-
-        /* Neck */
-        .neck {
-            position: absolute;
-            top: 80px;
-            left: 65px;
-            width: 20px;
-            height: 40px;
-            background: #f48fb1;
-            z-index: 1;
-            transform: rotate(15deg);
-            transform-origin: top center;
-        }
-
-        /* Body & Backpack */
-        .body-group {
-            position: absolute;
-            top: 105px;
-            left: 45px;
-            width: 70px;
-            height: 60px;
-            z-index: 2;
-        }
-
-        .torso {
-            position: absolute;
-            top: 0;
-            left: 15px;
-            width: 50px;
-            height: 55px;
-            background: #81d4fa;
-            border-radius: 15px 15px 5px 5px;
-            transform: rotate(5deg);
-        }
-
-        .backpack {
-            position: absolute;
-            top: 5px;
-            left: -10px;
-            width: 45px;
-            height: 45px;
-            background: #002d72;
-            border-radius: 15px;
-            z-index: 3;
-            transform: rotate(10deg);
-        }
-
-        .backpack-strap {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            width: 25px;
-            height: 8px;
-            background: #4fc3f7;
-            border-radius: 5px;
-        }
-
-        .arm {
-            position: absolute;
-            top: 15px;
-            left: 40px;
-            width: 15px;
-            height: 40px;
-            background: #f48fb1;
-            border-radius: 10px;
-            transform: rotate(-15deg);
-            z-index: 1;
-        }
-
-        /* Legs & Animation */
-        .legs {
-            position: absolute;
-            top: 150px;
-            left: 60px;
-            width: 40px;
-            height: 70px;
-        }
-
-        .leg {
-            position: absolute;
-            top: 0;
-            width: 16px;
-            height: 55px;
-            background: #007bff;
-            border-radius: 10px;
-            transform-origin: top center;
-        }
-
-        .leg-front {
-            left: 5px;
-            animation: walkFront 0.6s infinite alternate ease-in-out;
-            z-index: 3;
-        }
-
+        /* Leg Animation */
         .leg-back {
-            left: 20px;
-            background: #0056b3; /* Slightly darker for depth */
+            transform-origin: 80px 120px;
             animation: walkBack 0.6s infinite alternate ease-in-out;
-            z-index: 1;
         }
-
-        .shoe {
-            position: absolute;
-            bottom: -5px;
-            left: -10px;
-            width: 35px;
-            height: 15px;
-            background: #001f3f;
-            border-radius: 10px 15px 5px 5px;
-        }
-
-        .shoe::after {
-            content: '';
-            position: absolute;
-            bottom: 2px;
-            right: 5px;
-            width: 15px;
-            height: 3px;
-            background: #fff;
-            border-radius: 2px;
-        }
-
-        @keyframes walkFront {
-            0% { transform: rotate(-35deg); }
-            100% { transform: rotate(35deg); }
+        .leg-front {
+            transform-origin: 100px 120px;
+            animation: walkFront 0.6s infinite alternate ease-in-out;
         }
 
         @keyframes walkBack {
-            0% { transform: rotate(35deg); }
-            100% { transform: rotate(-35deg); }
+            0% { transform: rotate(15deg); }
+            100% { transform: rotate(-30deg); }
+        }
+        
+        @keyframes walkFront {
+            0% { transform: rotate(-30deg); }
+            100% { transform: rotate(25deg); }
         }
 
-        /* --- END CHARACTER STYLES --- */
+        /* Arm Animation */
+        .arm-swing {
+            transform-origin: 100px 75px;
+            animation: swingArm 0.6s infinite alternate ease-in-out;
+        }
+        
+        @keyframes swingArm {
+            0% { transform: rotate(-15deg); }
+            100% { transform: rotate(15deg); }
+        }
 
+        /* --- REST OF THE UI --- */
         .status {
             display: inline-block;
-            background: #dcfce7;
-            color: #15803d;
-            padding: 7px 15px;
+            background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+            color: #166534;
+            padding: 8px 18px;
             border-radius: 30px;
             font-size: 12px;
-            font-weight: bold;
-            margin-bottom: 17px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            box-shadow: 0 4px 10px rgba(22, 101, 52, 0.1);
         }
 
         h1 {
-            color: #172554;
-            font-size: 27px;
-            margin-bottom: 10px;
-            letter-spacing: 1px;
+            color: #0f172a;
+            font-size: 28px;
+            margin-bottom: 12px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
         }
 
         .subtitle {
             color: #64748b;
             font-size: 14px;
             line-height: 1.6;
-            margin-bottom: 24px;
+            margin-bottom: 26px;
+            font-weight: 500;
         }
 
         .time-box {
-            background: #f1f6ff;
-            border: 1px solid #dbeafe;
-            padding: 18px;
-            border-radius: 12px;
-            margin-bottom: 22px;
+            /* Gradient background for the time box */
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
+            border: 1px solid #bfdbfe;
+            padding: 20px;
+            border-radius: 16px;
+            margin-bottom: 24px;
+            box-shadow: inset 0 2px 4px rgba(255,255,255,0.8), 0 4px 6px rgba(0,0,0,0.02);
         }
 
         .time-label {
-            color: #64748b;
+            color: #475569;
             font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
             margin-bottom: 8px;
+            text-transform: uppercase;
         }
 
         .time {
             color: #1d4ed8;
-            font-size: 21px;
-            font-weight: bold;
+            font-size: 22px;
+            font-weight: 800;
+            text-shadow: 0 1px 1px rgba(255,255,255,0.8);
         }
 
         .meet-btn {
             display: block;
             width: 100%;
-            background: #1967d2;
+            /* Gradient button */
+            background: linear-gradient(135deg, #2563eb, #1e40af);
             color: white;
             text-decoration: none;
             padding: 16px;
-            border-radius: 10px;
-            font-size: 15px;
-            font-weight: bold;
-            transition: 0.3s ease;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            transition: all 0.3s ease;
             border: none;
             cursor: pointer;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3), inset 0 1px 0 rgba(255,255,255,0.2);
         }
 
-        .meet-btn:hover {
-            background: #0d47a1;
-            transform: scale(1.02);
+        .meet-btn:hover:not(:disabled) {
+            background: linear-gradient(135deg, #1d4ed8, #1e3a8a);
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4), inset 0 1px 0 rgba(255,255,255,0.2);
+        }
+
+        .meet-btn:active:not(:disabled) {
+            transform: translateY(1px) scale(0.98);
+            box-shadow: 0 2px 5px rgba(37, 99, 235, 0.3);
         }
 
         .meet-btn:disabled {
-            background: #64748b;
+            background: #94a3b8;
             cursor: wait;
             transform: none;
+            box-shadow: none;
         }
 
         .message {
             display: none;
-            background: #eff6ff;
-            border: 1px solid #bfdbfe;
-            color: #1e40af;
-            padding: 15px;
-            border-radius: 10px;
-            margin-top: 16px;
+            background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+            border: 1px solid #a5b4fc;
+            color: #3730a3;
+            padding: 16px;
+            border-radius: 12px;
+            margin-top: 18px;
             font-size: 14px;
-            font-weight: bold;
+            font-weight: 600;
             line-height: 1.6;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .footer {
-            margin-top: 23px;
+            margin-top: 25px;
             color: #64748b;
             font-size: 12px;
             line-height: 2;
+            font-weight: 600;
         }
 
         .footer span {
-            margin: 0 3px;
+            margin: 0 5px;
+            color: #cbd5e1;
         }
 
         .divider {
             border: none;
-            border-top: 1px solid #e2e8f0;
-            margin: 20px 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #e2e8f0, transparent);
+            margin: 22px 0;
         }
 
+        /* Mobile Responsiveness */
         @media (max-width: 480px) {
             body { padding: 15px; }
-            .class-card { padding: 23px 18px; border-radius: 16px; }
-            h1 { font-size: 23px; }
-            .character-container { transform: scale(0.9); margin-bottom: 5px; }
-            .time { font-size: 19px; }
-            .meet-btn { padding: 15px; font-size: 14px; }
+            .class-card { padding: 25px 20px; border-radius: 20px; }
+            h1 { font-size: 24px; }
+            .character-wrapper { width: 150px; height: 150px; }
+            .time { font-size: 20px; }
+            .meet-btn { padding: 14px; font-size: 15px; }
         }
     </style>
 </head>
@@ -415,39 +259,61 @@
             ⚡ ALGORITHM ARMY ⚡
         </div>
 
-        <!-- Animated Character -->
-        <div class="character-container">
-            <!-- Legs Group -->
-            <div class="legs">
+        <!-- Animated Icon Character -->
+        <div class="character-wrapper">
+            <svg class="character-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
                 <!-- Back Leg -->
-                <div class="leg leg-back">
-                    <div class="shoe"></div>
-                </div>
+                <g class="leg-back">
+                    <path d="M80 130 L75 165" stroke="#0b60d6" stroke-width="14" stroke-linecap="round"/>
+                    <path d="M75 165 L60 170 L75 178 L85 170 Z" fill="#051a3d"/>
+                </g>
+                
+                <!-- Backpack / Back Arm -->
+                <path d="M75 75 Q45 80 45 115 Q45 125 60 125 L75 115 Z" fill="#002d72"/>
+                <path d="M50 100 L70 100" stroke="#4fc3f7" stroke-width="6" stroke-linecap="round"/>
+                
+                <!-- Torso -->
+                <path d="M90 70 L80 135 L115 140 L120 75 Z" fill="#81d4fa"/>
+                <path d="M95 70 L85 135" stroke="#4fc3f7" stroke-width="2" opacity="0.5"/>
+
+                <!-- Neck -->
+                <path d="M95 65 L110 45" stroke="#f48fb1" stroke-width="16" stroke-linecap="round"/>
+
+                <!-- Head Group -->
+                <g transform="translate(100, 10) rotate(10)">
+                    <!-- Hat -->
+                    <path d="M5 30 Q20 -5 60 -5 Q70 5 65 30 L10 35 Z" fill="#9b2fa3"/>
+                    <!-- Hat Pattern -->
+                    <path d="M15 20 Q30 5 55 5" stroke="#e0a3e5" stroke-width="3" fill="none" stroke-dasharray="4 4"/>
+                    <path d="M10 27 Q30 12 60 12" stroke="#e0a3e5" stroke-width="3" fill="none" stroke-dasharray="4 4"/>
+                    
+                    <!-- Face -->
+                    <path d="M10 30 Q5 60 25 75 Q45 85 60 65 Q70 45 60 25 Z" fill="#f48fb1"/>
+                    
+                    <!-- Hair Spikes (Dark Blue) -->
+                    <path d="M55 25 Q75 30 70 50 Q65 65 55 70 Q65 50 55 40 Q50 35 55 25" fill="#051a3d"/>
+
+                    <!-- Eye -->
+                    <circle cx="35" cy="45" r="5" fill="#fff"/>
+                    <circle cx="36" cy="45" r="2.5" fill="#051a3d"/>
+                    
+                    <!-- Smile -->
+                    <path d="M45 58 Q55 62 60 55" stroke="#051a3d" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                </g>
+
+                <!-- Front Arm & Hand -->
+                <g class="arm-swing">
+                    <path d="M100 75 Q125 80 120 105" stroke="#f48fb1" stroke-width="14" fill="none" stroke-linecap="round"/>
+                </g>
+                <!-- Front Torso Overlap -->
+                <path d="M95 75 L105 135" stroke="#81d4fa" stroke-width="18" stroke-linecap="round"/>
+
                 <!-- Front Leg -->
-                <div class="leg leg-front">
-                    <div class="shoe"></div>
-                </div>
-            </div>
-
-            <!-- Body & Backpack -->
-            <div class="body-group">
-                <div class="backpack">
-                    <div class="backpack-strap"></div>
-                </div>
-                <div class="torso"></div>
-                <div class="arm"></div>
-            </div>
-
-            <!-- Head Group -->
-            <div class="neck"></div>
-            <div class="head-group">
-                <div class="hair"></div>
-                <div class="hair-pattern"></div>
-                <div class="face"></div>
-                <div class="hair-spikes"></div>
-                <div class="eye"></div>
-                <div class="smile"></div>
-            </div>
+                <g class="leg-front">
+                    <path d="M100 130 L105 165" stroke="#0b60d6" stroke-width="14" stroke-linecap="round"/>
+                    <path d="M105 165 L85 172 L100 178 L115 172 Z" fill="#051a3d"/>
+                </g>
+            </svg>
         </div>
 
         <span class="status">● ONLINE CLASS</span>
@@ -486,7 +352,7 @@
             🚀 Keep learning
         </div>
 
-        <div class="footer">
+        <div class="footer" style="margin-top: 10px; font-size: 11px;">
             © 2026 ALGORITHM ARMY
         </div>
 
