@@ -16,7 +16,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            /* Richer, deeper background gradient */
+            /* Rich background gradient */
             background: linear-gradient(135deg, #d9e2ff 0%, #f0f4ff 50%, #e0e7ff 100%);
             min-height: 100vh;
             display: flex;
@@ -27,7 +27,6 @@
         }
 
         .class-card {
-            /* Subtle gradient on the card itself */
             background: linear-gradient(180deg, #ffffff 0%, #f8faff 100%);
             width: 100%;
             max-width: 430px;
@@ -57,57 +56,61 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* --- ANIMATED ICON CHARACTER STYLES --- */
-        .character-wrapper {
+        /* --- ANIMATED BOOK ICON STYLES --- */
+        .book-wrapper {
             width: 180px;
             height: 180px;
             margin: 0 auto 15px;
             position: relative;
-            /* Bounce animation for the whole body */
-            animation: floatBody 1.5s infinite alternate ease-in-out;
+            /* Gentle floating animation for the whole book */
+            animation: floatBook 3s infinite alternate ease-in-out;
         }
 
-        @keyframes floatBody {
+        @keyframes floatBook {
             0% { transform: translateY(0px); }
-            100% { transform: translateY(-8px); }
+            100% { transform: translateY(-10px); }
         }
 
-        .character-svg {
+        .book-svg {
             width: 100%;
             height: 100%;
             overflow: visible;
-            filter: drop-shadow(0px 15px 15px rgba(0,0,0,0.1));
+            filter: drop-shadow(0px 15px 15px rgba(0,0,0,0.15));
+            perspective: 800px;
         }
 
-        /* Leg Animation */
-        .leg-back {
-            transform-origin: 80px 120px;
-            animation: walkBack 0.6s infinite alternate ease-in-out;
-        }
-        .leg-front {
-            transform-origin: 100px 120px;
-            animation: walkFront 0.6s infinite alternate ease-in-out;
+        /* Left Page */
+        .page-left {
+            transform-origin: 100px 50px;
+            animation: leftPageTurn 4s infinite alternate ease-in-out;
         }
 
-        @keyframes walkBack {
-            0% { transform: rotate(15deg); }
-            100% { transform: rotate(-30deg); }
-        }
-        
-        @keyframes walkFront {
-            0% { transform: rotate(-30deg); }
-            100% { transform: rotate(25deg); }
+        /* Right Page */
+        .page-right {
+            transform-origin: 100px 50px;
+            animation: rightPageTurn 4s infinite alternate ease-in-out;
         }
 
-        /* Arm Animation */
-        .arm-swing {
-            transform-origin: 100px 75px;
-            animation: swingArm 0.6s infinite alternate ease-in-out;
+        @keyframes leftPageTurn {
+            0%, 10% { transform: rotateY(0deg); }
+            90%, 100% { transform: rotateY(-25deg); }
         }
-        
-        @keyframes swingArm {
-            0% { transform: rotate(-15deg); }
-            100% { transform: rotate(15deg); }
+
+        @keyframes rightPageTurn {
+            0%, 10% { transform: rotateY(0deg); }
+            90%, 100% { transform: rotateY(25deg); }
+        }
+
+        /* Sparkle Animations */
+        .sparkle-1 {
+            animation: sparkle 2s infinite alternate;
+        }
+        .sparkle-2 {
+            animation: sparkle 2.5s infinite alternate 0.5s;
+        }
+        @keyframes sparkle {
+            0% { opacity: 0.2; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1.2); }
         }
 
         /* --- REST OF THE UI --- */
@@ -140,7 +143,6 @@
         }
 
         .time-box {
-            /* Gradient background for the time box */
             background: linear-gradient(135deg, #eff6ff, #dbeafe);
             border: 1px solid #bfdbfe;
             padding: 20px;
@@ -168,7 +170,6 @@
         .meet-btn {
             display: block;
             width: 100%;
-            /* Gradient button */
             background: linear-gradient(135deg, #2563eb, #1e40af);
             color: white;
             text-decoration: none;
@@ -239,12 +240,11 @@
             margin: 22px 0;
         }
 
-        /* Mobile Responsiveness */
         @media (max-width: 480px) {
             body { padding: 15px; }
             .class-card { padding: 25px 20px; border-radius: 20px; }
             h1 { font-size: 24px; }
-            .character-wrapper { width: 150px; height: 150px; }
+            .book-wrapper { width: 150px; height: 150px; }
             .time { font-size: 20px; }
             .meet-btn { padding: 14px; font-size: 15px; }
         }
@@ -259,60 +259,58 @@
             ⚡ ALGORITHM ARMY ⚡
         </div>
 
-        <!-- Animated Icon Character -->
-        <div class="character-wrapper">
-            <svg class="character-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                <!-- Back Leg -->
-                <g class="leg-back">
-                    <path d="M80 130 L75 165" stroke="#0b60d6" stroke-width="14" stroke-linecap="round"/>
-                    <path d="M75 165 L60 170 L75 178 L85 170 Z" fill="#051a3d"/>
+        <!-- Animated Opening Book Icon -->
+        <div class="book-wrapper">
+            <svg class="book-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                
+                <!-- Book Spine Background -->
+                <rect x="95" y="40" width="10" height="120" rx="5" fill="#1e3a8a" />
+                <rect x="95" y="40" width="5" height="120" fill="#2563eb" opacity="0.5"/>
+
+                <!-- Back Cover (Right) -->
+                <path d="M100 50 Q150 40 170 60 L170 160 Q150 140 100 150 Z" fill="#1e40af"/>
+                <path d="M100 50 Q150 40 170 60 L170 160 Q150 140 100 150 Z" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.3"/>
+
+                <!-- Left Page (Animated) -->
+                <g class="page-left">
+                    <path d="M100 50 Q50 40 30 60 L30 160 Q50 140 100 150 Z" fill="#ffffff"/>
+                    <!-- Text Lines on Left Page -->
+                    <line x1="45" y1="80" x2="85" y2="75" stroke="#cbd5e1" stroke-width="4" stroke-linecap="round"/>
+                    <line x1="45" y1="95" x2="80" y2="90" stroke="#cbd5e1" stroke-width="4" stroke-linecap="round"/>
+                    <line x1="45" y1="110" x2="85" y2="105" stroke="#cbd5e1" stroke-width="4" stroke-linecap="round"/>
+                    <line x1="45" y1="125" x2="70" y2="120" stroke="#cbd5e1" stroke-width="4" stroke-linecap="round"/>
+                    <!-- Bookmark -->
+                    <path d="M75 65 L75 90 L85 85 L85 60 Z" fill="#f59e0b"/>
+                </g>
+
+                <!-- Right Page (Animated) -->
+                <g class="page-right">
+                    <path d="M100 50 Q150 40 170 60 L170 160 Q150 140 100 150 Z" fill="#f8fafc"/>
+                    <!-- Text Lines on Right Page -->
+                    <line x1="115" y1="75" x2="155" y2="80" stroke="#cbd5e1" stroke-width="4" stroke-linecap="round"/>
+                    <line x1="115" y1="90" x2="150" y2="95" stroke="#cbd5e1" stroke-width="4" stroke-linecap="round"/>
+                    <line x1="115" y1="105" x2="155" y2="110" stroke="#cbd5e1" stroke-width="4" stroke-linecap="round"/>
+                    <line x1="115" y1="120" x2="140" y2="125" stroke="#cbd5e1" stroke-width="4" stroke-linecap="round"/>
+                    <!-- Illustration on Right Page -->
+                    <circle cx="135" cy="140" r="10" fill="#bfdbfe"/>
+                </g>
+
+                <!-- Central Page Curl Shadow -->
+                <path d="M100 50 L100 150" stroke="#e2e8f0" stroke-width="2"/>
+
+                <!-- Floating Sparkles / Magic around the book -->
+                <g class="sparkle-1">
+                    <path d="M30 30 L35 20 L40 30 L50 35 L40 40 L35 50 L30 40 L20 35 Z" fill="#fbbf24"/>
+                </g>
+                <g class="sparkle-2">
+                    <path d="M170 110 L173 103 L176 110 L183 113 L176 116 L173 123 L170 116 L163 113 Z" fill="#60a5fa"/>
+                </g>
+                <g class="sparkle-1" style="animation-delay: 1s;">
+                    <path d="M160 20 L163 13 L166 20 L173 23 L166 26 L163 33 L160 26 L153 23 Z" fill="#c084fc"/>
                 </g>
                 
-                <!-- Backpack / Back Arm -->
-                <path d="M75 75 Q45 80 45 115 Q45 125 60 125 L75 115 Z" fill="#002d72"/>
-                <path d="M50 100 L70 100" stroke="#4fc3f7" stroke-width="6" stroke-linecap="round"/>
-                
-                <!-- Torso -->
-                <path d="M90 70 L80 135 L115 140 L120 75 Z" fill="#81d4fa"/>
-                <path d="M95 70 L85 135" stroke="#4fc3f7" stroke-width="2" opacity="0.5"/>
-
-                <!-- Neck -->
-                <path d="M95 65 L110 45" stroke="#f48fb1" stroke-width="16" stroke-linecap="round"/>
-
-                <!-- Head Group -->
-                <g transform="translate(100, 10) rotate(10)">
-                    <!-- Hat -->
-                    <path d="M5 30 Q20 -5 60 -5 Q70 5 65 30 L10 35 Z" fill="#9b2fa3"/>
-                    <!-- Hat Pattern -->
-                    <path d="M15 20 Q30 5 55 5" stroke="#e0a3e5" stroke-width="3" fill="none" stroke-dasharray="4 4"/>
-                    <path d="M10 27 Q30 12 60 12" stroke="#e0a3e5" stroke-width="3" fill="none" stroke-dasharray="4 4"/>
-                    
-                    <!-- Face -->
-                    <path d="M10 30 Q5 60 25 75 Q45 85 60 65 Q70 45 60 25 Z" fill="#f48fb1"/>
-                    
-                    <!-- Hair Spikes (Dark Blue) -->
-                    <path d="M55 25 Q75 30 70 50 Q65 65 55 70 Q65 50 55 40 Q50 35 55 25" fill="#051a3d"/>
-
-                    <!-- Eye -->
-                    <circle cx="35" cy="45" r="5" fill="#fff"/>
-                    <circle cx="36" cy="45" r="2.5" fill="#051a3d"/>
-                    
-                    <!-- Smile -->
-                    <path d="M45 58 Q55 62 60 55" stroke="#051a3d" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-                </g>
-
-                <!-- Front Arm & Hand -->
-                <g class="arm-swing">
-                    <path d="M100 75 Q125 80 120 105" stroke="#f48fb1" stroke-width="14" fill="none" stroke-linecap="round"/>
-                </g>
-                <!-- Front Torso Overlap -->
-                <path d="M95 75 L105 135" stroke="#81d4fa" stroke-width="18" stroke-linecap="round"/>
-
-                <!-- Front Leg -->
-                <g class="leg-front">
-                    <path d="M100 130 L105 165" stroke="#0b60d6" stroke-width="14" stroke-linecap="round"/>
-                    <path d="M105 165 L85 172 L100 178 L115 172 Z" fill="#051a3d"/>
-                </g>
+                <!-- Bottom Shadow -->
+                <ellipse cx="100" cy="175" rx="60" ry="8" fill="#94a3b8" opacity="0.3"/>
             </svg>
         </div>
 
